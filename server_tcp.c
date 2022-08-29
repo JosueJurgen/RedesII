@@ -1,6 +1,5 @@
 // Nombre : servidor
-// Proposito : Recibe un mensaje y lo envia de vuelta al
- cliente
+// Proposito : Recibe un mensaje y lo envia de vuelta al cliente
 // Autor : Edwin Carrasco (Adaptado de [1])
 // FCreacion : --
 // FModific. : 24/04/2009
@@ -27,8 +26,7 @@ void AtenderCliente(int sock)
  // Recibir mensaje
 if ((received = recv(sock, buffer, BUFFSIZE, 0)) < 0)
  {
- AvisarError("No se pudo recibir bytes iniciales del
- cliente");
+ AvisarError("No se pudo recibir bytes iniciales del cliente");
  }
 // Envia bytes y verifica mas datos entrantes
 while (received > 0)
@@ -42,8 +40,7 @@ while (received > 0)
  // Verificar mas datos
  if ((received = recv(sock, buffer, BUFFSIZE, 0)) < 0)
  {
- AvisarError("No se pudo recibir bytes adicionales del
- cliente");
+ AvisarError("No se pudo recibir bytes adicionales del cliente");
  }
  }
  close(sock);
@@ -82,15 +79,13 @@ int main(int argc, char *argv[])
  if (bind(serversock, (struct sockaddr *) &echoserver,
  sizeof(echoserver)) < 0)
  {
- AvisarError("No se pudo enlazar el socket de
- servidor");
+ AvisarError("No se pudo enlazar el socket de servidor");
  }
 
  // Escuchar en el socket del servidor
  if (listen(serversock, MAXPENDING) < 0)
  {
- AvisarError("No se pudo escuchar en el socket del
- servidor");
+ AvisarError("No se pudo escuchar en el socket del servidor");
  }
 
  // Ejecutar hasta que se cancele
@@ -102,8 +97,7 @@ int main(int argc, char *argv[])
  if ((clientsock=accept(serversock,(struct sockaddr *)
  &echoclient, &clientlen)) < 0 )
  {
- AvisarError("No se pudo aceptar conexion de
- cliente");
+ AvisarError("No se pudo aceptar conexion de cliente");
  }
 
  fprintf(stdout, "Cliente conectado: %s\n",
