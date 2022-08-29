@@ -1,6 +1,5 @@
 // Nombre : Cliente
-// Proposito : Envia un mensaje y muestra el mensaje
- devuelto por el servidor
+// Proposito : Envia un mensaje y muestra el mensaje devuelto por el servidor
 // Autor : Edwin Carrasco (Adaptado de [1])
 // FCreacion : --
 // FModific. : --
@@ -31,8 +30,7 @@ int main(int argc, char *argv[])
  // Verificar argumentos necesarios para correr programa
  if (argc != 4)
  {
- fprintf(stderr, "USO: Cliente <ip de servidor>
- <mensaje> <puerto>\n");
+ fprintf(stderr, "USO: Cliente <ip de servidor> <mensaje> <puerto>\n");
  exit(1);
  }
 
@@ -62,8 +60,7 @@ int main(int argc, char *argv[])
  echolen = strlen(argv[2]);
 if (send(sock, argv[2], echolen, 0) != echolen)
  {
- AvisarError("Inconsistencia en el numero de bytes
- enviados");
+ AvisarError("Inconsistencia en el numero de bytes enviados");
  }
 
  // Recibir el mensaje de vuelta desde el servidor
@@ -73,13 +70,11 @@ if (send(sock, argv[2], echolen, 0) != echolen)
  int bytes = 0;
  if ((bytes = recv(sock, buffer, BUFFSIZE-1, 0)) < 1)
  {
- AvisarError("No se pudo recibir bytes desde el
- servidor");
+ AvisarError("No se pudo recibir bytes desde el servidor");
  }
 
  received += bytes;
- buffer[bytes]='\0'; // Cerciorarse que la cadena
- termine en \0
+ buffer[bytes]='\0'; // Cerciorarse que la cadena termine en \0
  fprintf(stdout, buffer);
  }
 
